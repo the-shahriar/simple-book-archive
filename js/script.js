@@ -4,7 +4,7 @@ const searchBook = () => {
     // clearing search field
     searchInput.value = '';
 
-    const url = `http://openlibrary.org/search.json?q=${searchText}`;
+    const url = `https://openlibrary.org/search.json?q=${searchText}`;
 
     // fetch data from api
     fetch(url)
