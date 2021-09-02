@@ -1,11 +1,10 @@
 const searchBook = () => {
     const searchInput = document.getElementById('search-field');
     const searchText = searchInput.value;
-
     // clearing search field
     searchInput.value = '';
 
-    url = `http://openlibrary.org/search.json?q=${searchText}`;
+    const url = `http://openlibrary.org/search.json?q=${searchText}`;
 
     // fetch data from api
     fetch(url)
@@ -73,7 +72,7 @@ const displayBooks = data => {
                     </h5>
                     <h6 class="book-author card-text"><a class="link-success" target="_blank" href="${authorUrl}">Author: ${author === undefined?noAuthor:author}</a></h6>
                     <h6 class="publisher card-text">Publisher: ${publisher === undefined?noPublisher:publisher}</h6>
-                    <h6 class="publish-date card-text">First Publish Year: ${publishYear === undefined?noPublishYear:publishYear}</h6>
+                    <h6 class="publish-date card-text">First published in: ${publishYear === undefined?noPublishYear:publishYear}</h6>
                 </div>
             </div>
             `
