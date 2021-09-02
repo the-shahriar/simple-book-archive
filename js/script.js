@@ -70,7 +70,7 @@ const displayBooks = data => {
                     <h5 class="book-title card-text">
                         <a class="link-dark text-decoration-none" href="${url}" target="_blank" rel="noopener">${book.title}</a>
                     </h5>
-                    <h6 class="book-author card-text"><a class="link-success" target="_blank" href="${authorUrl}">Author: ${author === undefined?noAuthor:author}</a></h6>
+                    <h6 class="book-author card-text"><a class="text-success" target="_blank" href="${authorUrl}">Author: ${author === undefined?noAuthor:author}</a></h6>
                     <h6 class="publisher card-text">Publisher: ${publisher === undefined?noPublisher:publisher}</h6>
                     <h6 class="publish-date card-text">First published in: ${publishYear === undefined?noPublishYear:publishYear}</h6>
                 </div>
