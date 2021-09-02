@@ -15,7 +15,7 @@ const searchBook = () => {
 
 const displayBooks = data => {
     const resultContainer = document.getElementById('result-container');
-    // getting total search result
+    // getting total search hits
     const totalResult = data.numFound;
     if (totalResult == 0) {
         resultContainer.innerHTML = `<h3 class="text-white bg-danger py-3">Sorry! No, Result Found</h3>`;
@@ -23,6 +23,7 @@ const displayBooks = data => {
     else{
         // getting all books from object
         const books = data.docs;
+        // total search result found
         const booksLength = books.length;
         resultContainer.innerHTML = `
             <div class="d-flex gap-3 justify-content-center">
@@ -36,12 +37,11 @@ const displayBooks = data => {
         container.textContent = '';
         // getting single book with loop
         books.forEach(book => {
-            console.log(book);
             const cover = book.cover_i;
             const url = `https://openlibrary.org/${book.key}`;
             const coverImageUrl = `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
             const authorUrl = `https://openlibrary.org/authors/${book.author_key}`;
-            const noImageFound = `../image/not_found.jpg `;
+            const noImageFound = `../image/not_found.png `;
             
             // console.log(result.title);
             const div = document.createElement('div');
@@ -49,14 +49,14 @@ const displayBooks = data => {
             div.innerHTML = (
             `
             <div class="card h-auto">
-                <img style="width: 100%; height: 350px;" src="${cover === undefined?noImageFound:coverImageUrl}">
+                <img class="card-img-top" style="height: 400px!important;" src="${cover === undefined?noImageFound:coverImageUrl}">
                 <div class="card-body">
-                    <h4 class="book-title card-text">
+                    <h5 class="book-title card-text">
                         <a class="link-dark text-decoration-none" href="${url}" target="_blank" rel="noopener">${book.title}</a>
-                    </h4>
-                    <h5 class="book-author card-text"><a class="link-success" target="_blank" href="${authorUrl}">Author: ${book.author_name}</a></h5>
+                    </h5>
+                    <h6 class="book-author card-text"><a class="link-success" target="_blank" href="${authorUrl}">Author: ${book.author_name}</a></h6>
                     <h6 class="publisher card-text">Publisher: ${book.publisher}</h6>
-                    <p class="publish-date card-text">First Publish On: ${book?.first_publish_year}</p>
+                    <h6 class="publish-date card-text">First Publish On: ${book?.first_publish_year}</h6>
                 </div>
             </div>
             `
